@@ -1,6 +1,12 @@
 import requests
 import random
 import string
+from faker import Faker
+from faker.providers import python, file, interner
+fake = Faker()
+fake.add_provider(internet)
+fake.add_provider(python)
+fake.add_provider(file)
 
 def generate_random_gibberish(length=50):
     return ''.join(random.choices(string.ascii_letters + string.digits + string.punctuation + ' ', k=length))
