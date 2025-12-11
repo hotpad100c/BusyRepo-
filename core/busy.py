@@ -29,7 +29,7 @@ if __name__ == "__main__":
     path, new_content, sha, random_content = choose_mutation()
     
     if action == 'pr':
-        branch_name = fetch_random_text()
+        branch_name = fetch_random_word()
         base_sha = repo.get_branch("main").commit.sha
         repo.create_git_ref(
             ref=f"refs/heads/{branch_name}",
