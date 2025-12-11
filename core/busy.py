@@ -4,7 +4,7 @@ from datetime import datetime
 from github import Github
 from RandomContentGenerator import fetch_random_text, fetch_random_word
 from GitHubItneractions import create_pull_request, create_direct_commit, create_issue
-from file_mutations import mutate_readme, create_random_file
+from FileManipulator import mutate_readme, create_random_file
 
 repo_name = os.environ["REPO"]
 token = os.environ["GH_TOKEN"]
