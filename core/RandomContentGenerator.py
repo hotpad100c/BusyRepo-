@@ -23,7 +23,9 @@ def fetch_random_word():
         pass
     
     return "Ohhnagg III failed whygssjl"
-    
+
+def fetch_random_content():
+    return faker.text();
 def fetch_random_text():
     try:
         r = requests.get("https://api.quotable.io/random", timeout=10)
