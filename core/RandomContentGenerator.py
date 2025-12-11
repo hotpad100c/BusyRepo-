@@ -2,7 +2,7 @@ import requests
 import random
 import string
 from faker import Faker
-from faker.providers import python, file, interner
+from faker.providers import python, file, internet
 fake = Faker()
 fake.add_provider(internet)
 fake.add_provider(python)
