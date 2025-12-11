@@ -13,6 +13,23 @@ token = os.environ["GH_TOKEN"]
 g = Github(auth=Auth.Token(token))
 repo = g.get_repo(repo_name)
 
+def trigger_next_run():
+    """Trigger the same workflow again via GitHub API."""
+    token = os.environ["GH_TOKEN"]
+    repo_full = repo_name
+    workflow_file = "doSomeThing.yml"
+    url = f"https://api.github.com/repos/{repo_full}/actions/workflows/{workflow_file}/dispatches"
+
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "Authorization": f"Bearer {token}",
+    }
+
+    data = {"ref": "main"}
+
+    r = requests.post(url, json=data, headers=headers)
+    print("Trigger status:", r.status_code)
+
 def choose_mutation():
     mutations = ['readme', 'random_file']
     mutation_type = random.choice(mutations)
@@ -82,23 +99,3 @@ if __name__ == "__main__":
     print(f"File: {path}")
     print(f"Content preview: {random_content[:50]}...")
     trigger_next_run()
-
-
-
-def trigger_next_run():
-    """Trigger the same workflow again via GitHub API."""
-    token = os.environ["GH_TOKEN"]
-    repo_full = repo_name
-    workflow_file = "doSomeThing.yml"
-    url = f"https://api.github.com/repos/{repo_full}/actions/workflows/{workflow_file}/dispatches"
-
-    headers = {
-        "Accept": "application/vnd.github+json",
-        "Authorization": f"Bearer {token}",
-    }
-
-    data = {"ref": "main"}
-
-    r = requests.post(url, json=data, headers=headers)
-    print("Trigger status:", r.status_code)
-
