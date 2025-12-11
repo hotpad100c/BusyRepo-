@@ -98,4 +98,4 @@ if __name__ == "__main__":
     print(f"Action: {action}")
     print(f"File: {path}")
     print(f"Content preview: {random_content[:50]}...")
-    trigger_next_run()
+    # trigger_next_run()
