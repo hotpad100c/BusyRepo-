@@ -1,4 +1,8 @@
 import requests
+
+def generate_random_gibberish(length=50):
+    return ''.join(random.choices(string.ascii_letters + string.digits + string.punctuation + ' ', k=length))
+
 def fetch_random_word():
     lang = random.choice(['zh', 'en'])
     try:
