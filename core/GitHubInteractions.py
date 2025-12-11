@@ -5,10 +5,8 @@ def create_pull_request(repo, branch_name, path, content):
     pr = repo.create_pull(
         title=f"{branch_name}",
         body=(
-            "PR\n\n"
             f"- {branch_name}\n"
             f"- {path}\n"
-            "- " + str(datetime.utcnow()) + " UTC\n"
         ),
         head=branch_name,
         base="main"
@@ -27,8 +25,7 @@ def create_direct_commit(repo, path, content, sha):
 
 def create_issue(repo, issue_title, issue_header, content):
     issue_body = (
-        f"##{issue_header} \n\n"
-        f"**Date:** {datetime.utcnow()} UTC\n\n"
+        f"## {issue_header} \n\n"
         f"> {content}\n\n"
         "---\n"
     )
