@@ -1,7 +1,7 @@
 import random
 import string
 from datetime import datetime
-from RandomContentGenerator import fetch_random_text, fetch_random_word, generate_random_gibberish
+from RandomContentGenerator import fetch_random_text, fetch_random_word, generate_random_gibberish, fetch_random_content
 
 def mutate_readme(repo):
     path = "README.md"
@@ -17,7 +17,7 @@ def mutate_readme(repo):
     new_block = (
         f"> {random_content}\n"
     )
-    new_content = content + new_block
+    new_content = content + new_block + fetch_random_content()
     return path, new_content, file.sha, random_content
 
 def create_random_file(repo):
@@ -38,11 +38,13 @@ def create_random_file(repo):
     num_lines = random.randint(5, 15)
     
     for i in range(num_lines):
-        line_type = random.choice(['text', 'word', 'gibberish'])
+        line_type = random.choice(['text', 'word','long', 'gibberish'])
         if line_type == 'text':
             content_lines.append(fetch_random_text())
         elif line_type == 'word':
             content_lines.append(fetch_random_word())
+        elif: line_type == 'long':
+            content_lines.append(fetch_random_content())
         else:
             gibberish_length = random.randint(30, 100)
             content_lines.append(generate_random_gibberish(gibberish_length))
