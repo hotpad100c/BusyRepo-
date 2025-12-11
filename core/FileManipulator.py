@@ -43,7 +43,7 @@ def create_random_file(repo):
             content_lines.append(fetch_random_text())
         elif line_type == 'word':
             content_lines.append(fetch_random_word())
-        elif: line_type == 'long':
+        elif line_type == 'long':
             content_lines.append(fetch_random_content())
         else:
             gibberish_length = random.randint(30, 100)
