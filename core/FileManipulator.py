@@ -34,7 +34,7 @@ def create_random_file(repo):
     filename, ext = random.choice(file_types)
     filename = fetch_random_word() + "_" + filename
     timestamp = datetime.utcnow().strftime('%Y%m%d_%H%M%S')
-    path = f"random_files/{timestamp}_{filename}"
+    path = f"random_files/{filename}"
     
     content_lines = []
     num_lines = random.randint(5, 15)
