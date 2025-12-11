@@ -2,7 +2,7 @@ import os
 import random
 from datetime import datetime
 from github import Github, Auth
-from RandomContentGenerator import fetch_random_text, fetch_random_word, fetch_random_question
+from RandomContentGenerator import fetch_random_text, fetch_random_word, fetch_random_question, fetch_random_content
 from GitHubInteractions import create_pull_request, create_direct_commit, create_issue
 from FileManipulator import mutate_readme, create_random_file
 import re
