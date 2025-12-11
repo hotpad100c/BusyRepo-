@@ -22,15 +22,7 @@ def fetch_random_text():
         r = requests.get("https://api.quotable.io/random", timeout=10)
         if r.status_code == 200:
             data = r.json()
-            return f"{data['content']} —— {data['author']}"
-    except Exception:
-        pass
-    
-    try:
-        r = requests.get("https://zenquotes.io/api/random", timeout=10)
-        if r.status_code == 200:
-            data = r.json()[0]
-            return f"{data['q']} —— {data['a']}"
+            return f"{data['content']}"
     except Exception:
         pass
     
@@ -43,3 +35,17 @@ def fetch_random_text():
         pass
     
     return "OOoAaa I faild i fell so sad i am bad."
+
+def fetch_random_question():
+
+    try:
+        r = requests.get("https://zenquotes.io/api/random", timeout=10)
+        if r.status_code == 200:
+            data = r.json()[0]
+            return f"{data['q']}"
+    except Exception:
+        pass
+    
+    return "OOoAaa ttI faild i ok."
+
+    
