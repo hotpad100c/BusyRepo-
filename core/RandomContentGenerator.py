@@ -3,7 +3,7 @@ import random
 import string
 from faker import Faker
 from faker.providers import python, file, internet
-fake = Faker()
+fake = Faker(['zh_CN', 'en_US', 'ja_JP'])
 fake.add_provider(internet)
 fake.add_provider(python)
 fake.add_provider(file)
