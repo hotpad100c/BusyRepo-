@@ -23,10 +23,7 @@ jobs:
           python-version: 3.11
           cache: 'pip'  
 
-      - name: Install requirements
-        run: |
-          pip install requests PyGithub
-          pip install Faker
+      - run: pip install -r core/requirements.txt
 
 
       - name: WORK?!
