@@ -33,7 +33,6 @@ if __name__ == "__main__":
         
         branch_name = fetch_random_word()
         branch_name = branch_name.lower()
-        branch_name = re.sub(r"[^a-z0-9\-]", "-", branch_name)
         base_sha = repo.get_branch("main").commit.sha
         repo.create_git_ref(
             ref=f"refs/heads/{branch_name}",
