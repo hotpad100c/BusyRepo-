@@ -21,7 +21,7 @@ def fetch_random_text():
         r = requests.get("https://api.quotable.io/random", timeout=10)
         if r.status_code == 200:
             data = r.json()
-            return f"{data['content']—— {data['author']}"
+            return f"{data['content']} —— {data['author']}"
     except Exception:
         pass
     
