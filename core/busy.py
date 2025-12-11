@@ -1,14 +1,14 @@
 import os
 import random
 from datetime import datetime
-from github import Github
+from github import Github, Auth
 from RandomContentGenerator import fetch_random_text, fetch_random_word, fetch_random_question
 from GitHubInteractions import create_pull_request, create_direct_commit, create_issue
 from FileManipulator import mutate_readme, create_random_file
 
 repo_name = os.environ["REPO"]
 token = os.environ["GH_TOKEN"]
-g = Github(token)
+g = Github(auth=Auth.Token(token))
 repo = g.get_repo(repo_name)
 
 def choose_mutation():
@@ -29,7 +29,10 @@ if __name__ == "__main__":
     path, new_content, sha, random_content = choose_mutation()
     
     if action == 'pr':
+        
         branch_name = fetch_random_word()
+        branch_name = branch_name.lower()
+        branch_name = re.sub(r"[^a-z0-9\-]", "-", branch_name)
         base_sha = repo.get_branch("main").commit.sha
         repo.create_git_ref(
             ref=f"refs/heads/{branch_name}",
