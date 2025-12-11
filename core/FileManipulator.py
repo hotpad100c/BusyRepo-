@@ -15,8 +15,6 @@ def mutate_readme(repo):
         random_content = fetch_random_word()
     
     new_block = (
-        "\n\n---\n"
-        f"### Busy at {datetime.utcnow()} UTC\n"
         f"> {random_content}\n"
     )
     new_content = content + new_block
