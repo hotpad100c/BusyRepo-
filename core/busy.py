@@ -2,7 +2,7 @@ import os
 import random
 from datetime import datetime
 from github import Github
-from RandomContentGenerator import fetch_random_text, fetch_random_word
+from RandomContentGenerator import fetch_random_text, fetch_random_word, fetch_random_question
 from GitHubInteractions import create_pull_request, create_direct_commit, create_issue
 from FileManipulator import mutate_readme, create_random_file
 
@@ -29,7 +29,7 @@ if __name__ == "__main__":
     path, new_content, sha, random_content = choose_mutation()
     
     if action == 'pr':
-        branch_name = f"busy-{random.randint(100000, 999999)}"
+        branch_name = fetch_random_text()
         base_sha = repo.get_branch("main").commit.sha
         repo.create_git_ref(
             ref=f"refs/heads/{branch_name}",
@@ -69,8 +69,8 @@ if __name__ == "__main__":
             print(f"Created file: {path}")
     
     elif action == 'issue':
-        issue_title = f"Busy Record - {datetime.utcnow().strftime('%Y-%m-%d %H:%M')}"
-        issue_header = "Random Content"
+        issue_title = fetch_random_question()
+        issue_header = fetch_random_text()
         issue = create_issue(repo, issue_title, issue_header, random_content)
         print(f"Created Issue #{issue.number}")
     
