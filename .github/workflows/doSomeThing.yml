@@ -2,7 +2,7 @@ name: doSomeThing
 
 on:
   schedule:
-    - cron: '* * * * *'
+    - cron: '*/1 * * * *'
   workflow_dispatch:
   pull_request:
   push:
