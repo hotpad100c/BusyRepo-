@@ -6,6 +6,7 @@ from RandomContentGenerator import fetch_random_text, fetch_random_word, fetch_r
 from GitHubInteractions import create_pull_request, create_direct_commit, create_issue
 from FileManipulator import mutate_readme, create_random_file
 import re
+import requests
 
 repo_name = os.environ["REPO"]
 token = os.environ["GH_TOKEN"]
@@ -80,3 +81,24 @@ if __name__ == "__main__":
     print(f"Action: {action}")
     print(f"File: {path}")
     print(f"Content preview: {random_content[:50]}...")
+    trigger_next_run()
+
+
+
+def trigger_next_run():
+    """Trigger the same workflow again via GitHub API."""
+    token = os.environ["GH_TOKEN"]
+    repo_full = repo_name
+    workflow_file = "doSomeThing.yml"
+    url = f"https://api.github.com/repos/{repo_full}/actions/workflows/{workflow_file}/dispatches"
+
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "Authorization": f"Bearer {token}",
+    }
+
+    data = {"ref": "main"}
+
+    r = requests.post(url, json=data, headers=headers)
+    print("Trigger status:", r.status_code)
+
