@@ -33,3 +33,4 @@ I’m so busy…
 > 导 言
 > sax
 > You're not that important; it's what you do that counts.
+> As things get closer to the light, the shadows get darker.
