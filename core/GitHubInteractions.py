@@ -32,6 +32,6 @@ def create_issue(repo, issue_title, issue_header, content):
     issue = repo.create_issue(
         title=issue_title,
         body=issue_body,
-        labels=["automation", "mutation"]
+        labels=["busy", "cool"]
     )
     return issue
